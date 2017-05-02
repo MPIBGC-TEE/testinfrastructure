@@ -4,7 +4,7 @@ def readme():
     with open('README.md') as f:
         return f.read()
 
-setup(name='test_infrastructure',
+setup(name='testinfrastructure',
         version='0.1',
         #test_suite="example_package.tests",#http://pythonhosted.org/setuptools/setuptools.html#test
         description='Infrastructure for IO-tests that need filesystem separation',

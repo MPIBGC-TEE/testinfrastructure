@@ -5,8 +5,6 @@ import os
 import sys
 from string import Template
 from subprocess import call,check_call,check_output
-#from pythonPackage.LvBackup import LvBackup
-#from pythonPackage.VmBackup import VmBackup
 
 class InDirTest(unittest.TestCase):
 
