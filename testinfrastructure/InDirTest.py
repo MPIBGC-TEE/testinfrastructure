@@ -1,16 +1,20 @@
 # vim:set ff=unix expandtab ts=4 sw=4:
 import unittest
 import pathlib
+import inspect
 import os
 import sys
 from string import Template
 from subprocess import call,check_call,check_output
 
 class InDirTest(unittest.TestCase):
+    def __init__(self,args):
+        st=inspect.stack()
+        self.caller_dir_path=pathlib.Path(os.path.dirname(os.path.abspath(inspect.getfile(st[-1].frame))))
+        super().__init__(args)
 
     def myDirPath():
-        myDirPath=pathlib.Path(__file__).absolute().parent
-        return(myDirPath)
+        return pathlib.Path.cwd()
 
         
     def tmpDirPath():
