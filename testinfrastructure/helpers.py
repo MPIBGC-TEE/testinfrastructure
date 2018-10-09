@@ -7,4 +7,3 @@ def pe(strng,env,comment=""):
     print(comment+"\n"+strng+"=:")
     print(eval(strng,env))
     print('############################################')
-
