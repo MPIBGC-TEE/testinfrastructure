@@ -31,3 +31,17 @@ def printOut(callerName,txt):
     print(Template("in function: ${cn}").substitute(cn=callerName))
     print(txt)
     print('############################################')
+
+def warning(txt):
+    print('############################################')
+    calling_frame=inspect.getouterframes(inspect.currentframe(),2)
+    func_name=calling_frame[1][3]
+    print("Warning in function {0}:".format(func_name))
+    print(txt)
+
+def deprecation_warning(txt):
+    print('############################################')
+    calling_frame=inspect.getouterframes(inspect.currentframe(),2)
+    func_name=calling_frame[1][3]
+    print("The function {0} is deprecated".format(func_name))
+    print(txt)
