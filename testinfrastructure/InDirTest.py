@@ -7,12 +7,12 @@ import os
 
 
 class InDirTest(unittest.TestCase):
-    def __init__(self, args):
-        st = inspect.stack()
-        # self.caller_dir_path = pathlib.Path(
-        #     os.path.dirname(os.path.abspath(inspect.getfile(st[-1].frame)))
-        # )
-        super().__init__(args)
+    #def __init__(self, args):
+    #    st = inspect.stack()
+    #    # self.caller_dir_path = pathlib.Path(
+    #    #     os.path.dirname(os.path.abspath(inspect.getfile(st[-1].frame)))
+    #    # )
+    #    super().__init__(args)
 
     def myDirPath():
         return pathlib.Path.cwd()
