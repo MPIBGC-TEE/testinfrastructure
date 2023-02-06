@@ -14,6 +14,7 @@ setup(name='testinfrastructure',
         author='Markus Müller',
         author_email='markus.mueller.1.g@googlemail.com',
         packages=find_packages(), #find all packages (multifile modules) recursively
+        package_dir={'': 'src'},
         classifiers = [
         "Programming Language :: Python :: 3",
         "Development Status :: 4 - Beta",

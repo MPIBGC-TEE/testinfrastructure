@@ -1,6 +1,5 @@
-fn="requirements.conda"
-conda update -y -n base -c defaults conda
-conda install -y python
-python create_conda_requirement_list.py ${fn} 
-conda install -c conda-forge -y --file ${fn}
-pip install -e .
+# automatically created by  ../../scripts/create_install_scripts.py
+# from setup.py , requirements.conda.extra and  requirements.src
+    conda install -c conda-forge -y pip
+    
+    pip install -e .  
