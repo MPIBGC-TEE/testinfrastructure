@@ -11,7 +11,7 @@ setup(name='testinfrastructure',
         #test_suite="example_package.tests",#http://pythonhosted.org/setuptools/setuptools.html#test
         description='Infrastructure for IO-tests that need filesystem separation',
         long_description=readme(),#avoid duplication 
-        author='Markus Müller',
+        author='Markus MÃ¼ller',
         author_email='markus.mueller.1.g@googlemail.com',
         packages=find_packages(), #find all packages (multifile modules) recursively
         package_dir={'': 'src'},
@@ -24,6 +24,11 @@ setup(name='testinfrastructure',
         "Operating System :: POSIX :: Linux",
         "Topic :: Education "
         ],
+        entry_points={
+        'console_scripts': [
+                'test_notebooks = testinfrastructure.test_notebooks:test_notebooks_cmd'
+                ]
+        },
         include_package_data=True,
         zip_safe=False)
 
