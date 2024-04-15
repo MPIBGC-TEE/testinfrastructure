@@ -6,6 +6,10 @@ def readme():
     with open('README.md') as f:
         return f.read()
 
+def non_src_requirements():
+    with open("requirements.non_src") as f:
+        return [l.strip() for l in f.readlines()]
+
 setup(name='testinfrastructure',
         version='0.1',
         #test_suite="example_package.tests",#http://pythonhosted.org/setuptools/setuptools.html#test
@@ -30,5 +34,6 @@ setup(name='testinfrastructure',
                 ]
         },
         include_package_data=True,
-        zip_safe=False)
-
+        zip_safe=False
+        install_requires=[ ] + non_src_requirements()
+)
