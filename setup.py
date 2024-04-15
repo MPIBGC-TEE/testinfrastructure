@@ -34,6 +34,6 @@ setup(name='testinfrastructure',
                 ]
         },
         include_package_data=True,
-        zip_safe=False
+        zip_safe=False,
         install_requires=[ ] + non_src_requirements()
 )
