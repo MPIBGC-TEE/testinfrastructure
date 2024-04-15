@@ -17,7 +17,7 @@ setup(name='testinfrastructure',
         long_description=readme(),#avoid duplication 
         author='Markus MÃ¼ller',
         author_email='markus.mueller.1.g@googlemail.com',
-        packages=find_packages(), #find all packages (multifile modules) recursively
+        packages=find_packages('src'), #find all packages (multifile modules) recursively
         package_dir={'': 'src'},
         classifiers = [
         "Programming Language :: Python :: 3",
