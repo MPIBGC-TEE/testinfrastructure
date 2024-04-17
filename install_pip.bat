@@ -5,7 +5,7 @@
 # file directly.
 # so we only install stuff explicitly that is not a dependency of the package
 # but necessary for testing.
-call  pip -r requirements.test
+call  pip install -r requirements.test
 # We install the dependencies that are not on pypy directly from github repos
 # This is not possible with conda (therefore we use pip here)
 # Do not do this (comment the following lines) 
