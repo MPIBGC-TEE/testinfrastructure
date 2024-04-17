@@ -21,7 +21,9 @@ class InDirTest(unittest.TestCase):
         return __class__.myDirPath().joinpath("tmp")
 
     def run(self, *args):
-        testDirPath = __class__.tmpDirPath().joinpath(self.id())
+        #testDirPath = __class__.tmpDirPath().joinpath(self.id())
+        cls=self.__class__
+        testDirPath = cls.tmpDirPath().joinpath(f"{cls.__module__}.{cls.__name__}.{self._testMethodName}")
         testDirName = testDirPath.as_posix()
 
         self.oldDirName = os.getcwd()
@@ -29,8 +31,8 @@ class InDirTest(unittest.TestCase):
         if testDirPath.exists():
             shutil.rmtree(testDirPath)
         testDirPath.mkdir(parents=True)
-        print("testDirName")
-        print(testDirName)
+        print("self.id()",self.id())
+        print("testDirName",testDirName)
 
         os.chdir(testDirName)
 
