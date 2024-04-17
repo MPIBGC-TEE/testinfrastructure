@@ -1,5 +1,4 @@
 # This file has been automatically  procuded by scripts/make_installers.sh  
-
 # If we use conda or one of its derivatives we
 # - install as many of the dependencies via conda 
 # - block pip from installing them by the "--no-deps" flag

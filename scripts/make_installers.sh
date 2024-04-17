@@ -1,21 +1,17 @@
 #!/usr/bin/env python3
 from string import Template
 from pathlib import Path
-import sys
 import os
 from collections import namedtuple
 dir_path=Path(__file__).parent
 file_name=Path(os.path.basename(__file__))
-sys.path.insert(0,dir_path)
-import shortesRelativePath as srp
-from difflib import Differ
+from testinfrastructure import shortesRelativePath as srp
 
 out_path=Path(".")
 srp=srp.rp(s=out_path,t=dir_path)
 
-t1=Template("""# This file has been automatically  procuded by ${fn}  
-
-""")
+txt1 = Template("""# This file has been automatically  procuded by ${fn}  
+""").substitute( fn=srp.joinpath(file_name))
 t2a=Template("""# If we use conda or one of its derivatives we
 # - install as many of the dependencies via conda 
 # - block pip from installing them by the "--no-deps" flag
@@ -26,11 +22,15 @@ t2a=Template("""# If we use conda or one of its derivatives we
 # but is a known problem and does affect us.
 ${command} install -y -c conda-forge --file requirements.test --file requirements.doc --file requirements.non_src --file requirements.conda_extra
 """)
-t2b="""# If we use conda or one of its derivatives we
+t2b=Template("""# If we use conda or one of its derivatives we
 # If you do not use conda but only pip, you do not have to preinstall i
 # any requirements since pip will also find and install them from the setup.py 
 # file directly.
-"""
+# so we only install stuff explicitly that is not a dependency of the package
+# but necessary for testing.
+${command} -r requirements.test
+""")
+
 t3=Template(
 """# We install the dependencies that are not on pypy directly from github repos
 # This is not possible with conda (therefore we use pip here)
@@ -44,9 +44,6 @@ ${command} install ${flags} -r requirements.github
 # use "$command -e ." instead in the same directory where this file lives. 
 ${command} install ${flags} -r pkg.github
 """)
-txt1 = t1.substitute(
-    fn=srp.joinpath(file_name)
-)
 pip_trunk="pip"
 
 def write(command,suffix,txt):
@@ -63,14 +60,25 @@ def conda_like_txt(conda_command, pip_command):
     )
 
 def pip_txt(pip_command):
-    return txt1 + t2b + t3.substitute(
-        command=pip_command,
-        flags=""
-    )
+	return (
+		txt1 + 
+		t2b.substitute(command=pip_command) + 
+		t3.substitute(
+        		command=pip_command,
+        		flags=""
+    		)
+	)
+
+
+
+
+    
 combi = namedtuple("combi",["suff","pref"])
 
 for c in [
-        combi("bat","call "),
+	# for windows we create a *.bat file and precede the command with "call"  
+        combi("bat","call "), 
+	# for linux we create a *.sh file and do not need to precede the command 
         combi("sh", "")
     ]:
     write(
