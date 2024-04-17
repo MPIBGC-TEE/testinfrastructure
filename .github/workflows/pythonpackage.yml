@@ -33,10 +33,7 @@ jobs:
 
       - name: Install python dependencies
         run: |
-          pip install -r requirements.non_src
-          pip install -r requirements.github
-          pip install -r pkg.github
-
+          install_pip.sh
       - name: Test with unittest
         run: |
           cd tests
