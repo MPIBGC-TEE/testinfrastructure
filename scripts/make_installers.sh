@@ -22,12 +22,12 @@ t2a=Template("""# If we use conda or one of its derivatives we
 # but is a known problem and does affect us.
 ${command} install -y -c conda-forge --file requirements.test --file requirements.doc --file requirements.non_src --file requirements.conda_extra
 """)
-t2b=Template("""# If we use conda or one of its derivatives we
-# If you do not use conda but only pip, you do not have to preinstall i
-# any requirements since pip will also find and install them from the setup.py 
-# file directly.
-# so we only install stuff explicitly that is not a dependency of the package
-# but necessary for testing.
+t2b=Template(
+""" # If you do not use conda but only pip, you do not have to
+preinstall 
+# any requirements since pip will also find and install them from the
+# setup.py file directly.  So we only install stuff explicitly that
+# is not a dependency of the package but necessary for testing.
 ${command} install -r requirements.test
 """)
 
@@ -61,12 +61,14 @@ def conda_like_txt(conda_command, pip_command):
 
 def pip_txt(pip_command):
 	return (
-		txt1 + 
-		t2b.substitute(command=pip_command) + 
+		txt1 
+		+ 
 		t3.substitute(
         		command=pip_command,
         		flags=""
     		)
+		+
+		t2b.substitute(command=pip_command)
 	)
 
 
