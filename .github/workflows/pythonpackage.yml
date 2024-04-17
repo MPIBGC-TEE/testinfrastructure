@@ -33,7 +33,7 @@ jobs:
 
       - name: Install python dependencies
         run: |
-          install_pip.sh
+          ./install_pip.sh
       - name: Test with unittest
         run: |
           cd tests
