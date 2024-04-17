@@ -28,7 +28,7 @@ t2b=Template("""# If we use conda or one of its derivatives we
 # file directly.
 # so we only install stuff explicitly that is not a dependency of the package
 # but necessary for testing.
-${command} -r requirements.test
+${command} install -r requirements.test
 """)
 
 t3=Template(
