@@ -1,4 +1,5 @@
-# This file has been automatically  procuded by scripts/make_installers.sh  
+# This file has been automatically procuded by the function: 
+# testinfrastructure.make_installers.make_installers_cmd  
 # We install the dependencies that are not on pypy directly from github repos
 # This is not possible with conda (therefore we use pip here)
 # Do not do this (comment the following lines) 

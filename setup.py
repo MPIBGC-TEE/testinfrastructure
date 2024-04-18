@@ -29,9 +29,10 @@ setup(name='testinfrastructure',
         "Topic :: Education "
         ],
         entry_points={
-        'console_scripts': [
-                'test_notebooks = testinfrastructure.test_notebooks:test_notebooks_cmd'
-                ]
+            'console_scripts': [
+                'test_notebooks = testinfrastructure.test_notebooks:test_notebooks_cmd',
+                'make_installers = testinfrastructure.make_installers:make_installers_cmd'
+        ]
         },
         include_package_data=True,
         zip_safe=False,
