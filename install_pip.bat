@@ -23,3 +23,10 @@ call  pip install  matplotlib
 
 # If you want to develop the package including the documentation you need some extra tools which can be installed by uncommenting the following line:
 # call  pip install  sphinx sphinx-autodoc-typehints
+
+# The following line installs the package without checking out the repository directly from github
+call  pip install  git+https://github.com/MPIBGC-TEE/testinfrastructure.git#egg=testinfrastructure
+
+# if you want to install it in develop mode (after checking out the repo) comment the previous line and
+# execute the following line instead, in the same directory where this file lives. 
+# call  pip install  -e .

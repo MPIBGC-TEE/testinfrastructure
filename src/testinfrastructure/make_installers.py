@@ -180,9 +180,17 @@ def pip_txt(
         tuples_3b,
         ""
     )
+    txt4=t_pip_pkg.substitute(
+        command=pip_command,
+        flags="",
+        pkg=pkg_str(["pkg.github"])
+        ) 
     #from IPython import embed;embed()
     return (
-		preamble + t_pip_update.substitute(command=pip_command) + txt3
+		preamble 
+        + t_pip_update.substitute(command=pip_command) 
+        + txt3
+        + txt4
 	)
 
 def make_installers_cmd():    
