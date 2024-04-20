@@ -8,13 +8,15 @@ dir_path=Path(__file__).parent
 #file_name=Path(os.path.basename(__file__))
 from testinfrastructure import shortesRelativePath as srp
 import inspect
+import re
 from functools import reduce
 #out_path=Path(".")
 #srp=srp.rp(s=out_path,t=dir_path)
 #
 t1 = Template("""# This file has been automatically procuded by the function: 
-# ${func_name} and those of the following files 
-# that are present in the root folder of the repo: 
+# ${func_name} 
+# and those of the following files that are present in the root
+# folder of the repo: 
 # requirements.non_src, 
 # requierements.conda_extra, 
 # requirements.test, 
@@ -39,7 +41,7 @@ t_github=Template(
 # This is not possible with conda (therefore we use pip here)
 # Do not do this (comment the following lines) 
 # if you have checked out these repos and installed the code in developer mode
-${command} install ${flags} ${reqs_github}
+${command} install ${flags} ${reqs}
 """)
 
 
@@ -48,7 +50,7 @@ t_conda_pkgs=Template("""
 # - install as many of the dependencies via conda 
 # - block pip from installing them by the "--no-deps" flag
 #  -and leave only the src packages for pip (for which there are no conda packages}.
-# This leaves conda in control of your environment and avoides pip
+# This leaves conda in control of your environment and prevents pip from
 # reinstalling packages that are already installed by conda but not
 # detected by pip. 
 # This happens only for some packages (e.g.  # python-igraph) 
@@ -82,9 +84,15 @@ ${command} install ${flags} ${pkg}
 
 def add_pkgs(pkgs,fn):
     pn=Path(fn)
+    ex=re.compile("^#.")
     if pn.exists():
         with pn.open("r") as f:
-            flns=f.readlines()
+            flns=list(
+                filter(
+                    lambda l: not ex.match(l),
+                    f.readlines()
+                )
+            )
         fpkgs=[l.strip() for l in flns]
     else:
         fpkgs = []
