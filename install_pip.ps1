@@ -1,6 +1,7 @@
 # This file has been automatically procuded by the function: 
-# testinfrastructure.make_installers.make_installers_cmd and those of the following files 
-# that are present in the root folder of the repo: 
+# testinfrastructure.make_installers.make_installers_cmd 
+# and those of the following files that are present in the root
+# folder of the repo: 
 # requirements.non_src, 
 # requierements.conda_extra, 
 # requirements.test, 
@@ -13,20 +14,20 @@
 # scripts automatically by running the command: 
 # $make_installers 
 
-call  pip install --update pip
+ pip install --update pip
 
 
 # To run the tests (which is recommended but not necessary for the package to work) 
 # you need some extra packages which can be installed by uncommenting the following line:
-call  pip install  matplotlib
+ pip install  matplotlib
 
 
 # If you want to develop the package including the documentation you need some extra tools which can be installed by uncommenting the following line:
-# call  pip install  sphinx sphinx-autodoc-typehints
+#  pip install  sphinx sphinx-autodoc-typehints
 
 # The following line installs the package without checking out the repository directly from github
-call  pip install  git+https://github.com/MPIBGC-TEE/testinfrastructure.git#egg=testinfrastructure
+ pip install  git+https://github.com/MPIBGC-TEE/testinfrastructure.git#egg=testinfrastructure
 
 # if you want to install it in develop mode (after checking out the repo) comment the previous line and
 # execute the following line instead, in the same directory where this file lives. 
-# call  pip install  -e .
+#  pip install  -e .

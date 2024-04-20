@@ -210,10 +210,11 @@ def make_installers_cmd():
     combi = namedtuple("combi",["suff","pref"])
     
     for c in [
-    	    # for windows we create a *.bat file and precede the command with "call"  
-            combi("bat","call "), 
     	    # for linux we create a *.sh file and do not need to precede the command 
-            combi("sh", "")
+            combi("sh", ""),
+    	    # for windows we create a *.bat file and precede the command with "call" or *.ps1 file for powershell 
+            #combi("bat","call "), 
+            combi("ps1", "")
         ]:
         write(
             command=pip_trunk,

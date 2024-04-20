@@ -1,6 +1,7 @@
 # This file has been automatically procuded by the function: 
-# testinfrastructure.make_installers.make_installers_cmd and those of the following files 
-# that are present in the root folder of the repo: 
+# testinfrastructure.make_installers.make_installers_cmd 
+# and those of the following files that are present in the root
+# folder of the repo: 
 # requirements.non_src, 
 # requierements.conda_extra, 
 # requirements.test, 
@@ -18,12 +19,12 @@
 # - install as many of the dependencies via conda 
 # - block pip from installing them by the "--no-deps" flag
 #  -and leave only the src packages for pip (for which there are no conda packages}.
-# This leaves conda in control of your environment and avoides pip
+# This leaves conda in control of your environment and prevents pip from
 # reinstalling packages that are already installed by conda but not
 # detected by pip. 
 # This happens only for some packages (e.g.  # python-igraph) 
 # but is a known problem at the time of writing and does affect us.
- conda install -y -c conda-forge nbconvert jupytext # this requirement file is conda specific # it only lists those packages that are not extractable from setup.py # which are extracted by the installer automatically pip
+ conda install -y -c conda-forge nbconvert jupytext pip
 
 
 # To run the tests (which is recommended but not necessary for the package to work) 

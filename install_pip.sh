@@ -1,6 +1,7 @@
 # This file has been automatically procuded by the function: 
-# testinfrastructure.make_installers.make_installers_cmd and those of the following files 
-# that are present in the root folder of the repo: 
+# testinfrastructure.make_installers.make_installers_cmd 
+# and those of the following files that are present in the root
+# folder of the repo: 
 # requirements.non_src, 
 # requierements.conda_extra, 
 # requirements.test, 
